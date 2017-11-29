@@ -1,12 +1,46 @@
-﻿using System;
-
-namespace Matrix
+﻿namespace Matrix
 {
-    class Program
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading;
+    using static System.Console;
+
+    internal static class Program
     {
-        static void Main(string[] args)
+        private const int WindowWidth = 80;
+        private const int WindowHeight = 25;
+
+        private static readonly Column[] columns;
+
+        static Program()
         {
-            Console.WriteLine("Hello World!");
+            columns = new Column[WindowWidth];
+
+            for (int i = 0; i < WindowWidth; i++)
+            {
+                columns[i] = new Column(i, WindowHeight - 1);
+            }
+        }
+
+        private static void Main(string[] args)
+        {
+            Initialize();
+
+            while (true)
+            {
+                columns[Random.Next(0, WindowWidth)].Draw();
+            }
+        }
+
+        private static void Initialize()
+        {
+            SetWindowSize(WindowWidth, WindowHeight);
+            SetBufferSize(WindowWidth, WindowHeight);
+
+            Title = "Matrix";
+
+            CursorVisible = false;
         }
     }
 }
