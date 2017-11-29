@@ -2,7 +2,7 @@
 {
     using System;
 
-    public static class Random
+    internal static class Random
     {
         private static System.Random random;
 

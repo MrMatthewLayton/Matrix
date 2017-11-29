@@ -3,7 +3,7 @@
     using System;
     using static Colorful.Console;
 
-    public sealed class Character
+    internal sealed class Character
     {
         private readonly int x;
         private readonly int y;
